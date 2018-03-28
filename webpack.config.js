@@ -8,7 +8,7 @@ let BUIKD_PATH = path.resolve(ROOT_PATH, 'build');
 let plugins = [];
 let webConfig = require('./src/utils/Config');
 plugins.push(new HtmlwebpackPlugin({
-	title: 'Echarts line',
+	title: '工作总结',
 	template: './Template/index.html'
 }));
 
@@ -35,14 +35,25 @@ module.exports = {
                 include: APP_PATH,
             },
             {
-                test:/\.scss/,
+                test:/\.(scss|css)/,
                 use:[
                     'style-loader',
                     'css-loader',
                     'sass-loader'
                 ],
                 include: APP_PATH
-            }
+            },
+            {
+                test: /\.(png|jpg|gif|ico)$/,
+                use: [{
+                    loader: "url-loader",
+                    options: {
+                        limit: 3000,
+                        name: "[name].[ext]",
+                        outputPath: "img/"
+                    }
+                }]
+            },
         ]
     },
     plugins:plugins,

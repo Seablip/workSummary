@@ -1,5 +1,6 @@
 'use strict';
 import React,{ PureComponent } from 'react';
+import LazyLoad from '../libs/lazy/lazyLoad';
 import Viewer from 'viewerjs';
 import "../css/viewer.min.css";
 
@@ -90,6 +91,7 @@ export default class ImgPreview extends PureComponent {
     }
 
     componentDidMount() {
+        alert(111);
         new Viewer(document.getElementById('imgPre'),{
             inline:false,
         });
